@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  
+  <!-- PWA & Mobile Native Meta Tags (Android & iOS) -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MCS Salgaderia">
+  <meta name="theme-color" content="#0c0c0c">
+  <meta name="format-detection" content="telephone=no">
+  
+  <!-- Web App Manifest Inline (Data URI) para instalação como App Nativo -->
+  <link rel="manifest" href='data:application/manifest+json,{
+    "name": "MCS Salgaderia Artesanal",
+    "short_name": "MCS Salgaderia",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0c0c0c",
+    "theme_color": "#d4af37",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&q=80&w=192",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&q=80&w=512",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }'>
+  <link rel="apple-touch-icon" href="/MCS/Fotos/Logo_MCS_Salgaderia.jpg">
+
+  <title>MCS Salgaderia Artesanal - App Delivery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#0c0c0c',
+              dark: '#141414',
+              card: '#1c1c1e',
+              surface: '#242426',
+              border: '#2c2c2e',
+              gold: '#d4af37',
+              goldHover: '#b89628',
+              goldLight: '#f3e5ab'
+            }
+          },
+          spacing: {
+            'safe-top': 'env(safe-area-inset-top)',
+            'safe-bottom': 'env(safe-area-inset-bottom)',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    * {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0c0c0c;
+      color: #f2f2f7;
+      overscroll-behavior-y: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    input, textarea, select {
+      user-select: text;
+      -webkit-user-select: text;
+      font-size: 16px !important;
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #fff2ac 0%, #d4af37 50%, #997a15 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .sheet-backdrop {
+      transition: opacity 0.3s ease;
+    }
+    .sheet-panel {
+      transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .sheet-hidden .sheet-backdrop {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .sheet-hidden .sheet-panel {
+      transform: translateY(100%);
+    }
+
+    .tap-scale:active {
+      transform: scale(0.96);
+      transition: transform 0.1s ease;
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .animate-pop-in {
+      animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-brand-black pb-[calc(84px+env(safe-area-inset-bottom))]">
+
+  <!-- NATIVE APP TOP HEADER -->
+  <header class="sticky top-0 z-30 bg-brand-dark/90 backdrop-blur-xl border-b border-brand-border pt-[env(safe-area-inset-top)]">
+    <div class="px-4 h-16 flex items-center justify-between max-w-2xl mx-auto">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full overflow-hidden border border-brand-gold bg-brand-black flex items-center justify-center shadow-md shrink-0">
+          <img src="/MCS-Salgaderia/fotos/Logo_MCS_Salgaderia.jpg" alt="MCS Logo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&q=80&w=200';">
+        </div>
+        <div>
+          <h1 class="text-base font-extrabold tracking-wide gold-gradient-text leading-tight">MCS SALGADERIA</h1>
+          <div class="flex items-center gap-1.5 text-[11px] text-emerald-400 font-medium">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Aberto • Delivery & Retirada</span>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="window.openInstallTip()" class="w-9 h-9 rounded-full bg-brand-card border border-brand-border flex items-center justify-center text-brand-gold tap-scale" title="Instalar App">
+        <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+      </button>
+    </div>
+
+    <!-- STICKY HORIZONTAL CATEGORY PILLS -->
+    <nav class="px-4 py-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar border-t border-brand-border/50 bg-brand-black/60 max-w-2xl mx-auto">
+      <button onclick="window.filterCategory('todos', this)" class="cat-btn active px-4 py-1.5 rounded-full text-xs font-semibold transition-all bg-brand-gold text-brand-black whitespace-nowrap tap-scale">Todos</button>
+      <button onclick="window.filterCategory('fritos', this)" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-brand-card text-gray-300 border border-brand-border whitespace-nowrap tap-scale">Fritos</button>
+      <button onclick="window.filterCategory('assados', this)" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-brand-card text-gray-300 border border-brand-border whitespace-nowrap tap-scale">Assados</button>
+      <button onclick="window.filterCategory('porcoes', this)" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-brand-card text-gray-300 border border-brand-border whitespace-nowrap tap-scale">Porções</button>
+      <button onclick="window.filterCategory('combos', this)" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-brand-card text-gray-300 border border-brand-border whitespace-nowrap tap-scale">Combos Festa</button>
+      <button onclick="window.filterCategory('doces', this)" class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-brand-card text-gray-300 border border-brand-border whitespace-nowrap tap-scale">Doces</button>
+    </nav>
+  </header>
+
+  <!-- COMPACT MOBILE HERO BANNER -->
+  <section class="px-4 pt-4 pb-2 max-w-2xl mx-auto w-full">
+    <div class="relative rounded-2xl bg-gradient-to-r from-brand-card via-brand-surface to-brand-card border border-brand-gold/25 p-4 overflow-hidden shadow-lg">
+      <div class="relative z-10 flex items-center justify-between gap-3">
+        <div>
+          <span class="inline-block px-2 py-0.5 bg-brand-gold/15 text-brand-gold rounded text-[10px] font-bold uppercase tracking-wider mb-1">Artesanal & Fresquinho</span>
+          <h2 class="text-lg font-bold text-white leading-snug">Monte seu Combo ou Porção</h2>
+          <p class="text-xs text-gray-400 mt-0.5">Selecione a quantidade desejada e peça pelo WhatsApp.</p>
+        </div>
+        <div class="w-12 h-12 rounded-2xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold shrink-0">
+          <i class="fa-solid fa-crown text-xl"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOBILE FEED / PRODUCTS LIST -->
+  <main class="px-4 py-3 max-w-2xl mx-auto w-full flex-grow">
+    <div id="products-grid" class="flex flex-col gap-3.5">
+      <!-- Rendered dynamically as Mobile App Cards -->
+    </div>
+  </main>
+
+  <!-- FLOATING STICKY BOTTOM BAR -->
+  <div id="floating-cart-bar" class="fixed bottom-0 left-0 right-0 z-30 bg-brand-dark/95 backdrop-blur-xl border-t border-brand-border px-4 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] transition-transform duration-300">
+    <div class="max-w-2xl mx-auto">
+      <button onclick="window.openCartSheet()" class="w-full h-12 rounded-2xl bg-brand-gold text-brand-black font-bold text-sm px-4 flex items-center justify-between shadow-lg shadow-brand-gold/10 tap-scale">
+        <div class="flex items-center gap-2.5">
+          <span id="bottom-badge" class="bg-brand-black text-brand-gold text-xs font-extrabold w-6 h-6 rounded-full flex items-center justify-center">0</span>
+          <span>Ver Sacola</span>
+        </div>
+        <span id="bottom-subtotal" class="font-extrabold text-base">R$ 0,00</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- POP-UP INFORMATIVO (QUANTIDADE ZERO / ALERTA)                         -->
+  <!-- ===================================================================== -->
+  <div id="popup-alert" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-5 hidden">
+    <div class="bg-brand-card border border-brand-gold/50 rounded-3xl max-w-xs w-full p-6 text-center space-y-4 shadow-2xl animate-pop-in">
+      <div class="w-14 h-14 rounded-full bg-brand-gold/15 border border-brand-gold/30 text-brand-gold flex items-center justify-center mx-auto">
+        <i class="fa-solid fa-circle-exclamation text-2xl"></i>
+      </div>
+      <div>
+        <h4 id="popup-alert-title" class="font-extrabold text-white text-base">Quantidade Zerada</h4>
+        <p id="popup-alert-msg" class="text-xs text-gray-300 mt-1.5 leading-relaxed">
+          Por favor, selecione a quantidade desejada utilizando o botão <strong>(+)</strong> antes de adicionar o item ao seu pedido.
+        </p>
+      </div>
+      <button onclick="window.closeAlertPopup()" class="w-full h-11 rounded-2xl bg-brand-gold text-brand-black font-extrabold text-xs tracking-wide uppercase tap-scale shadow-md">
+        Entendi
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- BOTTOM SHEET 1: PERSONALIZAR SABORES (Combos & Porções)               -->
+  <!-- ===================================================================== -->
+  <div id="sheet-flavor" class="fixed inset-0 z-50 sheet-hidden pointer-events-none">
+    <div onclick="window.closeFlavorSheet()" class="sheet-backdrop fixed inset-0 bg-black/80 backdrop-blur-xs pointer-events-auto"></div>
+    <div class="sheet-panel fixed bottom-0 left-0 right-0 max-w-2xl mx-auto bg-brand-card border-t border-brand-gold/30 rounded-t-3xl max-h-[90vh] flex flex-col shadow-2xl pointer-events-auto pb-[env(safe-area-inset-bottom)]">
+      
+      <!-- Drag Handle -->
+      <div class="w-full flex justify-center pt-3 pb-1" onclick="window.closeFlavorSheet()">
+        <div class="w-10 h-1.5 rounded-full bg-gray-600"></div>
+      </div>
+
+      <!-- Header -->
+      <div class="px-5 py-3 border-b border-brand-border flex items-center justify-between">
+        <div>
+          <h3 id="modal-title" class="text-base font-bold text-white">Personalizar Sabores</h3>
+          <p id="modal-subtitle" class="text-xs text-brand-gold mt-0.5">Selecione a distribuição</p>
+        </div>
+        <button onclick="window.closeFlavorSheet()" class="w-8 h-8 rounded-full bg-brand-surface text-gray-300 flex items-center justify-center tap-scale">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div id="modal-body" class="p-5 overflow-y-auto no-scrollbar flex-grow space-y-5">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Sticky Footer -->
+      <div class="p-4 border-t border-brand-border bg-brand-dark flex items-center justify-between gap-3">
+        <div class="text-xs text-gray-300">
+          <span class="block text-[10px] text-gray-400 uppercase">Selecionados</span>
+          <span id="modal-status-count" class="font-bold text-brand-gold text-sm">0/0</span>
+        </div>
+        <button id="btn-confirm-flavors" onclick="window.confirmFlavorSelection()" disabled class="h-12 px-6 rounded-2xl text-xs font-extrabold bg-brand-gold text-brand-black opacity-40 cursor-not-allowed transition-all tap-scale">
+          Confirmar Sabores
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- BOTTOM SHEET 2: SACOLA / CARRINHO                                     -->
+  <!-- ===================================================================== -->
+  <div id="sheet-cart" class="fixed inset-0 z-50 sheet-hidden pointer-events-none">
+    <div onclick="window.closeCartSheet()" class="sheet-backdrop fixed inset-0 bg-black/80 backdrop-blur-xs pointer-events-auto"></div>
+    <div class="sheet-panel fixed bottom-0 left-0 right-0 max-w-2xl mx-auto bg-brand-card border-t border-brand-border rounded-t-3xl max-h-[88vh] flex flex-col shadow-2xl pointer-events-auto pb-[env(safe-area-inset-bottom)]">
+      
+      <!-- Drag Handle -->
+      <div class="w-full flex justify-center pt-3 pb-1" onclick="window.closeCartSheet()">
+        <div class="w-10 h-1.5 rounded-full bg-gray-600"></div>
+      </div>
+
+      <!-- Header -->
+      <div class="px-5 py-3 border-b border-brand-border flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-bag-shopping text-brand-gold"></i>
+          <h3 class="font-bold text-white text-base">Sua Sacola</h3>
+        </div>
+        <button onclick="window.closeCartSheet()" class="w-8 h-8 rounded-full bg-brand-surface text-gray-300 flex items-center justify-center tap-scale">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Items -->
+      <div id="cart-items" class="p-5 overflow-y-auto no-scrollbar flex-grow space-y-3">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Footer -->
+      <div class="p-4 border-t border-brand-border bg-brand-dark space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-xs text-gray-400">Subtotal dos produtos</span>
+          <span id="cart-subtotal" class="font-extrabold text-white text-base">R$ 0,00</span>
+        </div>
+        <p class="text-[11px] text-gray-500">* A taxa de entrega é calculada na próxima etapa.</p>
+
+        <button id="btn-checkout" onclick="window.openCheckoutSheet()" disabled class="w-full h-12 bg-brand-gold text-brand-black font-extrabold rounded-2xl text-sm opacity-40 cursor-not-allowed transition-all tap-scale">
+          Continuar para Entrega & Pagamento
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- BOTTOM SHEET 3: CHECKOUT (DADOS & PAGAMENTO)                          -->
+  <!-- ===================================================================== -->
+  <div id="sheet-checkout" class="fixed inset-0 z-50 sheet-hidden pointer-events-none">
+    <div onclick="window.closeCheckoutSheet()" class="sheet-backdrop fixed inset-0 bg-black/80 backdrop-blur-xs pointer-events-auto"></div>
+    <div class="sheet-panel fixed bottom-0 left-0 right-0 max-w-2xl mx-auto bg-brand-card border-t border-brand-gold/30 rounded-t-3xl max-h-[92vh] flex flex-col shadow-2xl pointer-events-auto pb-[env(safe-area-inset-bottom)]">
+      
+      <!-- Drag Handle -->
+      <div class="w-full flex justify-center pt-3 pb-1" onclick="window.closeCheckoutSheet()">
+        <div class="w-10 h-1.5 rounded-full bg-gray-600"></div>
+      </div>
+
+      <!-- Header -->
+      <div class="px-5 py-3 border-b border-brand-border flex items-center justify-between">
+        <div>
+          <h3 class="text-base font-bold text-white">Dados do Pedido & Pagamento</h3>
+          <p class="text-[11px] text-gray-400">Sem cadastro — finalize direto no WhatsApp</p>
+        </div>
+        <button onclick="window.closeCheckoutSheet()" class="w-8 h-8 rounded-full bg-brand-surface text-gray-300 flex items-center justify-center tap-scale">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Form -->
+      <form id="checkout-form" onsubmit="window.submitOrder(event)" class="p-5 overflow-y-auto no-scrollbar flex-grow space-y-5">
+        
+        <!-- 1. Identificação -->
+        <div class="space-y-2.5">
+          <label class="text-[11px] font-bold uppercase tracking-wider text-brand-gold block">1. Seus Dados</label>
+          <input type="text" id="cust-name" required placeholder="Seu nome" class="w-full h-12 px-4 rounded-xl bg-brand-dark border border-brand-border text-white focus:border-brand-gold focus:outline-none">
+          <input type="tel" id="cust-phone" required placeholder="WhatsApp (DDD + Número)" class="w-full h-12 px-4 rounded-xl bg-brand-dark border border-brand-border text-white focus:border-brand-gold focus:outline-none">
+        </div>
+
+        <!-- 2. Entrega ou Retirada -->
+        <div class="space-y-2.5">
+          <label class="text-[11px] font-bold uppercase tracking-wider text-brand-gold block">2. Como deseja receber?</label>
+          <div class="grid grid-cols-2 gap-2.5">
+            <label class="flex items-center justify-center gap-2 h-12 px-3 rounded-xl bg-brand-dark border border-brand-border cursor-pointer has-[:checked]:border-brand-gold has-[:checked]:bg-brand-gold/10 text-xs font-semibold tap-scale">
+              <input type="radio" name="delivery-mode" value="entrega" checked onchange="window.updateDeliveryCalculation()" class="accent-brand-gold">
+              <span>Entrega (+R$ 6,00)</span>
+            </label>
+            <label class="flex items-center justify-center gap-2 h-12 px-3 rounded-xl bg-brand-dark border border-brand-border cursor-pointer has-[:checked]:border-brand-gold has-[:checked]:bg-brand-gold/10 text-xs font-semibold tap-scale">
+              <input type="radio" name="delivery-mode" value="retirada" onchange="window.updateDeliveryCalculation()" class="accent-brand-gold">
+              <span>Retirar (Grátis)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Endereço Condicional -->
+        <div id="address-container" class="space-y-2">
+          <label class="text-[11px] font-bold uppercase tracking-wider text-brand-gold block">Endereço Completo</label>
+          <input type="text" id="cust-address" placeholder="Rua, número, bairro e ponto de referência" class="w-full h-12 px-4 rounded-xl bg-brand-dark border border-brand-border text-white focus:border-brand-gold focus:outline-none">
+        </div>
+
+        <!-- 3. Pagamento -->
+        <div class="space-y-2.5">
+          <label class="text-[11px] font-bold uppercase tracking-wider text-brand-gold block">3. Forma de Pagamento</label>
+          <select id="payment-method" onchange="window.handlePaymentChange()" class="w-full h-12 px-4 rounded-xl bg-brand-dark border border-brand-border text-white focus:border-brand-gold focus:outline-none">
+            <option value="Pix">Pix</option>
+            <option value="Cartão de Crédito">Cartão de Crédito</option>
+            <option value="Cartão de Débito">Cartão de Débito</option>
+            <option value="Dinheiro">Dinheiro</option>
+          </select>
+
+          <div id="change-container" class="hidden pt-1">
+            <input type="text" id="cust-change" inputmode="decimal" placeholder="Troco para quanto? (Ex: 50,00)" class="w-full h-12 px-4 rounded-xl bg-brand-dark border border-brand-border text-white focus:border-brand-gold focus:outline-none">
+          </div>
+        </div>
+
+        <!-- Resumo Financeiro -->
+        <div class="p-4 rounded-2xl bg-brand-dark border border-brand-border space-y-2">
+          <div class="flex justify-between text-xs text-gray-400">
+            <span>Subtotal</span>
+            <span id="checkout-subtotal">R$ 0,00</span>
+          </div>
+          <div class="flex justify-between text-xs text-gray-400">
+            <span>Taxa de Entrega</span>
+            <span id="checkout-fee" class="text-brand-gold font-semibold">R$ 6,00</span>
+          </div>
+          <div class="border-t border-brand-border pt-2 flex justify-between items-center">
+            <span class="text-sm font-bold text-white">Total a Pagar</span>
+            <span id="checkout-total" class="text-brand-gold font-extrabold text-lg">R$ 0,00</span>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full h-13 py-3.5 bg-[#25D366] text-black font-extrabold rounded-2xl text-sm flex items-center justify-center gap-2 shadow-lg tap-scale">
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+          Enviar Pedido no WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL DICA DE INSTALAÇÃO PWA (ANDROID / iOS)                          -->
+  <!-- ===================================================================== -->
+  <div id="modal-install" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-5 hidden">
+    <div class="bg-brand-card border border-brand-gold/40 rounded-3xl max-w-sm w-full p-6 space-y-4 shadow-2xl animate-pop-in">
+      <div class="flex items-center justify-between">
+        <h4 class="font-bold text-white text-base flex items-center gap-2">
+          <i class="fa-solid fa-mobile-screen text-brand-gold"></i>
+          Instalar no Celular
+        </h4>
+        <button onclick="window.closeInstallTip()" class="w-8 h-8 rounded-full bg-brand-surface text-gray-400 flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+      <div class="space-y-3 text-xs text-gray-300 leading-relaxed">
+        <div class="p-3 rounded-xl bg-brand-dark border border-brand-border">
+          <p class="font-bold text-brand-gold mb-1"><i class="fa-brands fa-apple mr-1"></i> No iPhone (iOS / Safari):</p>
+          <p>Toque no ícone de <strong>Compartilhar</strong> (<i class="fa-solid fa-arrow-up-from-bracket"></i>) na barra inferior e escolha <strong>"Adicionar à Tela de Início"</strong>.</p>
+        </div>
+        <div class="p-3 rounded-xl bg-brand-dark border border-brand-border">
+          <p class="font-bold text-brand-gold mb-1"><i class="fa-brands fa-android mr-1"></i> No Android (Chrome):</p>
+          <p>Toque nos <strong>3 pontinhos</strong> (<i class="fa-solid fa-ellipsis-vertical"></i>) no canto superior direito e toque em <strong>"Instalar aplicativo"</strong> ou <strong>"Adicionar à tela inicial"</strong>.</p>
+        </div>
+      </div>
+      <button onclick="window.closeInstallTip()" class="w-full h-11 rounded-xl bg-brand-gold text-brand-black font-bold text-xs tap-scale">Entendi</button>
+    </div>
+  </div>
+
+  <!-- APP JAVASCRIPT -->
+  <script>
+    // --- HAPTIC FEEDBACK (Android & WebKit) ---
+    function triggerHaptic(pattern = 15) {
+      if (navigator.vibrate) {
+        navigator.vibrate(pattern);
+      }
+    }
+
+    // --- POP-UP INFORMATIVO ---
+    window.showAlertPopup = function(title, message) {
+      triggerHaptic([30, 50, 30]);
+      document.getElementById('popup-alert-title').innerText = title;
+      document.getElementById('popup-alert-msg').innerHTML = message;
+      document.getElementById('popup-alert').classList.remove('hidden');
+    };
+
+    window.closeAlertPopup = function() {
+      triggerHaptic(10);
+      document.getElementById('popup-alert').classList.add('hidden');
+    };
+
+    // --- CATALOG DATA ---
+    const PRODUCTS = [
+      // Fritos 180g
+      { id: 'f1', category: 'fritos', name: 'Coxinha de Frango / Catupiry(180g)', price: 9.00, desc: 'Massa leve com recheio abundante de frango e catupiry.', img: '/MCS-Salgaderia/fotos/lanche/coxinha_frango_catupiry.jpeg' },
+      { id: 'f2', category: 'fritos', name: 'Coxinha de Costela (180g)', price: 11.00, desc: 'Massa leve com recheio de costela bovina e cream cheese.', img: '/MCS-Salgaderia/fotos/lanche/coxinha_costela.jpeg' },
+      { id: 'f3', category: 'fritos', name: 'Coxinha de Calabresa (180g)', price: 10.00, desc: 'Massa leve com recheio de linguiça calabresa e catupiry.', img: '/MCS-Salgaderia/fotos/lanche/coxinha_calabresa.jpeg' },
+      { id: 'f4', category: 'fritos', name: 'Coxinha de frango (180g)', price: 8.00, desc: 'Massa leve com recheio abundante de frango fesfiado.', img: '/MCS-Salgaderia/fotos/lanche/coxinha_frango.jpeg' },
+      
+      // Assados
+      { id: 'a1', category: 'assados', name: 'Joelho Presunto e Queijo', price: 9.00, desc: 'Massa assada macia e recheada com presunto e queijo.', img: '/MCS-Salgaderia/fotos/lanche/joelho_queijo_presunto.jpeg' },
+      { id: 'a2', category: 'assados', name: 'Hambúrguer Assado', price: 12.00, desc: 'Massa leve assada com Carne artesanal, queijo mussarela, presunto e cheddan.', img: '/MCS-Salgaderia/fotos/lanche/hamburge.jpeg' },
+      { id: 'a3', category: 'assados', name: 'Baguete de Calabresa', price: 16.00, desc: 'Massa leve assada com recheio de linguiça calabresa, azeitona, queijo mussarela e catupiry.', img: '/MCS-Salgaderia/fotos/lanche/baguete_calabresa.jpeg' },
+      { id: 'a4', category: 'assados', name: 'Baguete de Pernil', price: 18.00, desc: 'Massa leve assada com recheio de pernil suíno e creeam cheese.', img: '/MCS-Salgaderia/fotos/lanche/baguete_pernil.jpeg' },
+
+      // Porção 20g (Mínimo 30 unidades)
+      { id: 'p1', category: 'porcoes', name: 'Porção Salgadinhos Fritos (20g)', price: 1.10, isPorcao: true, minQty: 30, desc: 'Monte com seus sabores favoritos (Mínimo 30 unidades).', img: '/MCS-Salgaderia/fotos/festa/salgadinhos_fritos.jpeg' },
+
+      // Combos Festa
+      { id: 'c1', category: 'combos', name: 'Combo Festa 1 (30 Salgados)', price: 45.00, isCombo: true, fritosReq: 20, assadosReq: 10, desc: '20 Salgados Fritos + 10 Assados à sua escolha.', img: '/MCS-Salgaderia/fotos/festa/salgadinhos_diversos.jpeg' },
+      { id: 'c2', category: 'combos', name: 'Combo Festa 2 (50 Salgados)', price: 72.00, isCombo: true, fritosReq: 35, assadosReq: 15, desc: '35 Salgados Fritos + 15 Assados à sua escolha.', img: '/MCS-Salgaderia/fotos/festa/salgadinhos_diversos.jpeg' },
+      { id: 'c3', category: 'combos', name: 'Combo Festa 3 (100 Salgados)', price: 135.00, isCombo: true, fritosReq: 70, assadosReq: 30, desc: '70 Salgados Fritos + 30 Assados à sua escolha.', img: '/MCS-Salgaderia/fotos/festa/salgadinhos_diversos.jpeg' },
+
+      // Doces
+      { id: 'd1', category: 'doces', name: 'Churros Doce de Leite (20g)', price: 1.50, desc: 'Crocante por fora, macio e recheado por dentro.', img: '/MCS-Salgaderia/fotos/lanche/churros.jpeg' },
+      { id: 'd2', category: 'doces', name: 'Carolina Recheada', price: 2.00, desc: 'Massa choux leve recheada com doce de leite caseiro.', img: '/MCS-Salgaderia/fotos/lanche/carolinas.jpeg' }
+    ];
+
+    const FLAVORS_FRITOS = ['Coxinha de Frango', 'Bolinha de Queijo', 'Kibe Tradicional', 'Risoles Presunto/Queijo', 'Calabresa com Queijo', 'Enroladinho Salsicha'];
+    const FLAVORS_ASSADOS = ['Joelho Presunto e Queijo', 'Hambúrguer Assado', 'Esfiha de Carne', 'Empada de Frango'];
+
+    // --- STATE ---
+    let cardQuantities = {};
+    let cart = [];
+    let activeCategory = 'todos';
+    let currentCustomizingProduct = null;
+    let currentCustomizingQty = 0;
+    let selectedFlavors = { fritos: {}, assados: {} };
+
+    // Todos os contadores dos produtos começam zerados (0)
+    PRODUCTS.forEach(p => { cardQuantities[p.id] = 0; });
+
+    // --- RENDER NATIVE MOBILE CARDS ---
+    function renderProducts() {
+      const grid = document.getElementById('products-grid');
+      grid.innerHTML = '';
+
+      const filtered = activeCategory === 'todos' 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === activeCategory);
+
+      filtered.forEach(p => {
+        const qty = cardQuantities[p.id] || 0;
+        const hasQty = qty > 0;
+        const card = document.createElement('div');
+        card.className = "bg-brand-card border border-brand-border rounded-2xl p-3.5 flex flex-col gap-3 shadow-md";
+
+        const btnStyle = hasQty 
+          ? "bg-brand-gold text-brand-black font-extrabold shadow-xs" 
+          : "bg-brand-surface text-gray-400 font-semibold border border-brand-border";
+
+        card.innerHTML = `
+          <div class="flex gap-3.5 items-center">
+            <img src="${p.img}" alt="${p.name}" class="w-20 h-20 rounded-xl object-cover bg-brand-dark shrink-0 border border-brand-border/60">
+            <div class="flex-grow min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="font-bold text-white text-sm leading-snug">${p.name}</h3>
+              </div>
+              <p class="text-xs text-gray-400 mt-1 line-clamp-2 leading-relaxed">${p.desc}</p>
+              <div class="mt-2 flex items-center justify-between">
+                <span class="text-sm font-extrabold text-brand-gold">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
+                ${p.isPorcao ? '<span class="text-[10px] px-2 py-0.5 rounded bg-brand-surface text-gray-300 font-medium">Mín. 30 un.</span>' : ''}
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between gap-2.5 pt-2.5 border-t border-brand-border/60">
+            <!-- Touch Stepper -->
+            <div class="flex items-center bg-brand-dark border border-brand-border rounded-xl h-10 overflow-hidden">
+              <button onclick="window.updateCardQty('${p.id}', -1)" class="w-10 h-full flex items-center justify-center text-gray-300 active:bg-brand-surface tap-scale">
+                <i class="fa-solid fa-minus text-xs"></i>
+              </button>
+              <span class="w-9 text-center font-bold text-sm ${hasQty ? 'text-brand-gold' : 'text-white'}">${qty}</span>
+              <button onclick="window.updateCardQty('${p.id}', 1)" class="w-10 h-full flex items-center justify-center text-brand-gold active:bg-brand-surface tap-scale">
+                <i class="fa-solid fa-plus text-xs"></i>
+              </button>
+            </div>
+
+            <!-- Action Button (Valida se qty > 0, senão exibe pop-up informativo) -->
+            <button onclick="window.handleAddToCartClick('${p.id}')" class="flex-grow h-10 px-4 ${btnStyle} rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all tap-scale">
+              <i class="fa-solid fa-plus"></i>
+              <span>${(p.isCombo || p.isPorcao) ? 'Montar & Adicionar' : 'Adicionar'}</span>
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    window.filterCategory = function(cat, btnEl) {
+      triggerHaptic();
+      activeCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-gold', 'text-brand-black', 'font-semibold');
+        btn.classList.add('bg-brand-card', 'text-gray-300', 'border-brand-border', 'font-medium');
+      });
+      btnEl.classList.remove('bg-brand-card', 'text-gray-300', 'border-brand-border', 'font-medium');
+      btnEl.classList.add('bg-brand-gold', 'text-brand-black', 'font-semibold');
+      renderProducts();
+    };
+
+    window.updateCardQty = function(productId, delta) {
+      triggerHaptic();
+      const prod = PRODUCTS.find(p => p.id === productId);
+      const minStep = prod.minQty || 1;
+      let current = cardQuantities[productId] || 0;
+
+      if (delta > 0) {
+        current = current === 0 ? minStep : current + (prod.isPorcao ? 10 : 1);
+      } else {
+        if (current <= minStep) {
+          current = 0;
+        } else {
+          current -= (prod.isPorcao ? 10 : 1);
+        }
+      }
+      cardQuantities[productId] = current;
+      renderProducts();
+    };
+
+    window.handleAddToCartClick = function(productId) {
+      const prod = PRODUCTS.find(p => p.id === productId);
+      const qty = cardQuantities[productId] || 0;
+
+      // BLOQUEIO: Se quantidade for zero, NÃO adiciona e exibe pop-up informativo
+      if (qty <= 0) {
+        const minText = prod.minQty 
+          ? `Este item exige no mínimo <strong>${prod.minQty} unidades</strong>. Toque no botão <strong>(+)</strong> ao lado para selecionar a quantidade antes de adicionar.`
+          : `Selecione a quantidade desejada de <strong>${prod.name}</strong> tocando no botão <strong>(+)</strong> antes de adicionar ao pedido.`;
+        
+        window.showAlertPopup('Quantidade não selecionada', minText);
+        return;
+      }
+
+      triggerHaptic();
+
+      if (prod.isCombo || prod.isPorcao) {
+        window.openFlavorSheet(prod, qty);
+      } else {
+        window.addToCartDirect(prod, qty);
+      }
+    };
+
+    // --- BOTTOM SHEET: FLAVOR SELECTION ---
+    window.openFlavorSheet = function(prod, qty) {
+      currentCustomizingProduct = prod;
+      currentCustomizingQty = qty;
+
+      // Contadores de sabores começam rigorosamente zerados (0)
+      selectedFlavors = { fritos: {}, assados: {} };
+      FLAVORS_FRITOS.forEach(f => selectedFlavors.fritos[f] = 0);
+      FLAVORS_ASSADOS.forEach(a => selectedFlavors.assados[a] = 0);
+
+      const sheet = document.getElementById('sheet-flavor');
+      const title = document.getElementById('modal-title');
+      const subtitle = document.getElementById('modal-subtitle');
+
+      title.innerText = prod.name;
+      if (prod.isCombo) {
+        subtitle.innerText = `Escolha ${prod.fritosReq * qty} Fritos e ${prod.assadosReq * qty} Assados`;
+      } else if (prod.isPorcao) {
+        subtitle.innerText = `Distribua as ${qty} unidades entre os sabores`;
+      }
+
+      window.renderFlavorSelectors();
+      sheet.classList.remove('sheet-hidden', 'pointer-events-none');
+    };
+
+    window.closeFlavorSheet = function() {
+      const sheet = document.getElementById('sheet-flavor');
+      sheet.classList.add('sheet-hidden', 'pointer-events-none');
+      currentCustomizingProduct = null;
+    };
+
+    window.renderFlavorSelectors = function() {
+      const body = document.getElementById('modal-body');
+      const prod = currentCustomizingProduct;
+      const qty = currentCustomizingQty;
+      body.innerHTML = '';
+
+      if (prod.isCombo) {
+        const totalFritosReq = prod.fritosReq * qty;
+        const selectedFritosSum = Object.values(selectedFlavors.fritos).reduce((a, b) => a + b, 0);
+
+        let html = `
+          <div>
+            <div class="flex justify-between items-center mb-2.5">
+              <h4 class="font-bold text-white text-sm">Salgados Fritos</h4>
+              <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${selectedFritosSum === totalFritosReq ? 'bg-emerald-500/20 text-emerald-400' : 'bg-brand-gold/15 text-brand-gold'}">
+                ${selectedFritosSum} / ${totalFritosReq}
+              </span>
+            </div>
+            <div class="space-y-2">
+        `;
+
+        FLAVORS_FRITOS.forEach(flavor => {
+          const count = selectedFlavors.fritos[flavor] || 0;
+          html += `
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-brand-dark border border-brand-border">
+              <span class="text-xs text-gray-200 font-medium">${flavor}</span>
+              <div class="flex items-center border border-brand-border rounded-xl bg-brand-card h-9 overflow-hidden">
+                <button onclick="window.updateFlavorCount('fritos', '${flavor}', -1)" class="w-9 h-full flex items-center justify-center text-gray-300 active:bg-brand-surface tap-scale">-</button>
+                <span class="w-8 text-center text-xs font-bold text-white">${count}</span>
+                <button onclick="window.updateFlavorCount('fritos', '${flavor}', 1)" class="w-9 h-full flex items-center justify-center text-brand-gold active:bg-brand-surface tap-scale">+</button>
+              </div>
+            </div>
+          `;
+        });
+        html += `</div></div>`;
+
+        const totalAssadosReq = prod.assadosReq * qty;
+        const selectedAssadosSum = Object.values(selectedFlavors.assados).reduce((a, b) => a + b, 0);
+
+        html += `
+          <div class="pt-4 border-t border-brand-border">
+            <div class="flex justify-between items-center mb-2.5">
+              <h4 class="font-bold text-white text-sm">Salgados Assados</h4>
+              <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${selectedAssadosSum === totalAssadosReq ? 'bg-emerald-500/20 text-emerald-400' : 'bg-brand-gold/15 text-brand-gold'}">
+                ${selectedAssadosSum} / ${totalAssadosReq}
+              </span>
+            </div>
+            <div class="space-y-2">
+        `;
+
+        FLAVORS_ASSADOS.forEach(flavor => {
+          const count = selectedFlavors.assados[flavor] || 0;
+          html += `
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-brand-dark border border-brand-border">
+              <span class="text-xs text-gray-200 font-medium">${flavor}</span>
+              <div class="flex items-center border border-brand-border rounded-xl bg-brand-card h-9 overflow-hidden">
+                <button onclick="window.updateFlavorCount('assados', '${flavor}', -1)" class="w-9 h-full flex items-center justify-center text-gray-300 active:bg-brand-surface tap-scale">-</button>
+                <span class="w-8 text-center text-xs font-bold text-white">${count}</span>
+                <button onclick="window.updateFlavorCount('assados', '${flavor}', 1)" class="w-9 h-full flex items-center justify-center text-brand-gold active:bg-brand-surface tap-scale">+</button>
+              </div>
+            </div>
+          `;
+        });
+        html += `</div></div>`;
+
+        body.innerHTML = html;
+        window.validateFlavorTotals(selectedFritosSum, totalFritosReq, selectedAssadosSum, totalAssadosReq);
+
+      } else if (prod.isPorcao) {
+        const totalReq = qty;
+        const selectedSum = Object.values(selectedFlavors.fritos).reduce((a, b) => a + b, 0);
+
+        let html = `
+          <div>
+            <div class="flex justify-between items-center mb-2.5">
+              <h4 class="font-bold text-white text-sm">Sabores da Porção (20g)</h4>
+              <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${selectedSum === totalReq ? 'bg-emerald-500/20 text-emerald-400' : 'bg-brand-gold/15 text-brand-gold'}">
+                ${selectedSum} / ${totalReq} un.
+              </span>
+            </div>
+            <div class="space-y-2">
+        `;
+
+        FLAVORS_FRITOS.forEach(flavor => {
+          const count = selectedFlavors.fritos[flavor] || 0;
+          html += `
+            <div class="flex items-center justify-between p-3 rounded-2xl bg-brand-dark border border-brand-border">
+              <span class="text-xs text-gray-200 font-medium">${flavor}</span>
+              <div class="flex items-center border border-brand-border rounded-xl bg-brand-card h-9 overflow-hidden">
+                <button onclick="window.updateFlavorCount('fritos', '${flavor}', -1)" class="w-9 h-full flex items-center justify-center text-gray-300 active:bg-brand-surface tap-scale">-</button>
+                <span class="w-8 text-center text-xs font-bold text-white">${count}</span>
+                <button onclick="window.updateFlavorCount('fritos', '${flavor}', 1)" class="w-9 h-full flex items-center justify-center text-brand-gold active:bg-brand-surface tap-scale">+</button>
+              </div>
+            </div>
+          `;
+        });
+        html += `</div></div>`;
+
+        body.innerHTML = html;
+        window.validateFlavorTotals(selectedSum, totalReq, 0, 0);
+      }
+    };
+
+    window.updateFlavorCount = function(category, flavor, delta) {
+      triggerHaptic();
+      const current = selectedFlavors[category][flavor] || 0;
+      if (delta < 0 && current <= 0) return;
+      selectedFlavors[category][flavor] = current + delta;
+      window.renderFlavorSelectors();
+    };
+
+    window.validateFlavorTotals = function(current1, req1, current2 = 0, req2 = 0) {
+      const btn = document.getElementById('btn-confirm-flavors');
+      const statusText = document.getElementById('modal-status-count');
+
+      const isValid = (current1 === req1) && (current2 === req2);
+      
+      if (current2 > 0 || req2 > 0) {
+        statusText.innerText = `Fritos: ${current1}/${req1} • Assados: ${current2}/${req2}`;
+      } else {
+        statusText.innerText = `${current1} de ${req1} un.`;
+      }
+
+      if (isValid) {
+        btn.disabled = false;
+        btn.classList.remove('opacity-40', 'cursor-not-allowed');
+      } else {
+        btn.disabled = true;
+        btn.classList.add('opacity-40', 'cursor-not-allowed');
+      }
+    };
+
+    window.confirmFlavorSelection = function() {
+      triggerHaptic();
+      const prod = currentCustomizingProduct;
+      const qty = currentCustomizingQty;
+
+      cart.push({
+        cartItemId: Date.now() + Math.random(),
+        product: prod,
+        qty: qty,
+        flavors: JSON.parse(JSON.stringify(selectedFlavors))
+      });
+
+      cardQuantities[prod.id] = 0;
+      renderProducts();
+
+      window.closeFlavorSheet();
+      window.updateCartUI();
+      window.openCartSheet();
+    };
+
+    window.addToCartDirect = function(prod, qty) {
+      const existing = cart.find(item => item.product.id === prod.id);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({
+          cartItemId: Date.now() + Math.random(),
+          product: prod,
+          qty: qty,
+          flavors: null
+        });
+      }
+      cardQuantities[prod.id] = 0;
+      renderProducts();
+      window.updateCartUI();
+      window.openCartSheet();
+    };
+
+    // --- BOTTOM SHEET: CART ---
+    window.openCartSheet = function() {
+      triggerHaptic();
+      document.getElementById('sheet-cart').classList.remove('sheet-hidden', 'pointer-events-none');
+    };
+
+    window.closeCartSheet = function() {
+      document.getElementById('sheet-cart').classList.add('sheet-hidden', 'pointer-events-none');
+    };
+
+    window.updateCartUI = function() {
+      const container = document.getElementById('cart-items');
+      const bottomBadge = document.getElementById('bottom-badge');
+      const bottomSubtotal = document.getElementById('bottom-subtotal');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      const btnCheckout = document.getElementById('btn-checkout');
+
+      const totalItems = cart.reduce((acc, item) => acc + (item.product.isPorcao ? 1 : item.qty), 0);
+      bottomBadge.innerText = totalItems;
+
+      if (totalItems > 0) {
+        btnCheckout.disabled = false;
+        btnCheckout.classList.remove('opacity-40', 'cursor-not-allowed');
+      } else {
+        btnCheckout.disabled = true;
+        btnCheckout.classList.add('opacity-40', 'cursor-not-allowed');
+      }
+
+      container.innerHTML = '';
+      let subtotal = 0;
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-10 text-gray-500">
+            <i class="fa-solid fa-bag-shopping text-4xl mb-3 opacity-25"></i>
+            <p class="text-sm font-medium">Sua sacola está vazia</p>
+            <p class="text-xs mt-1">Escolha itens do cardápio para começar.</p>
+          </div>
+        `;
+      } else {
+        cart.forEach(item => {
+          const itemTotal = item.product.price * item.qty;
+          subtotal += itemTotal;
+
+          let flavorDetails = '';
+          if (item.flavors) {
+            const fritosList = Object.entries(item.flavors.fritos || {})
+              .filter(([_, q]) => q > 0)
+              .map(([f, q]) => `${q}x ${f}`).join(', ');
+            
+            const assadosList = Object.entries(item.flavors.assados || {})
+              .filter(([_, q]) => q > 0)
+              .map(([a, q]) => `${q}x ${a}`).join(', ');
+
+            if (fritosList) flavorDetails += `<p class="text-[11px] text-gray-400"><strong>Fritos:</strong> ${fritosList}</p>`;
+            if (assadosList) flavorDetails += `<p class="text-[11px] text-gray-400"><strong>Assados:</strong> ${assadosList}</p>`;
+          }
+
+          const cartCard = document.createElement('div');
+          cartCard.className = "p-3.5 rounded-2xl bg-brand-dark border border-brand-border flex flex-col gap-2";
+          cartCard.innerHTML = `
+            <div class="flex justify-between items-start gap-2">
+              <div>
+                <h4 class="font-bold text-white text-sm">${item.product.name}</h4>
+                <p class="text-xs text-brand-gold font-bold mt-0.5">Qtd: ${item.qty} • R$ ${itemTotal.toFixed(2).replace('.', ',')}</p>
+              </div>
+              <button onclick="window.removeFromCart('${item.cartItemId}')" class="w-8 h-8 rounded-full bg-brand-card text-gray-400 hover:text-red-400 flex items-center justify-center tap-scale">
+                <i class="fa-solid fa-trash-can text-xs"></i>
+              </button>
+            </div>
+            ${flavorDetails ? `<div class="pt-2 border-t border-brand-border/60 space-y-1">${flavorDetails}</div>` : ''}
+          `;
+          container.appendChild(cartCard);
+        });
+      }
+
+      const formattedSub = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+      subtotalEl.innerText = formattedSub;
+      bottomSubtotal.innerText = formattedSub;
+    };
+
+    window.removeFromCart = function(cartItemId) {
+      triggerHaptic();
+      cart = cart.filter(item => item.cartItemId != cartItemId);
+      window.updateCartUI();
+    };
+
+    // --- BOTTOM SHEET: CHECKOUT ---
+    window.openCheckoutSheet = function() {
+      if (cart.length === 0) return;
+      triggerHaptic();
+      window.closeCartSheet();
+      window.updateDeliveryCalculation();
+      document.getElementById('sheet-checkout').classList.remove('sheet-hidden', 'pointer-events-none');
+    };
+
+    window.closeCheckoutSheet = function() {
+      document.getElementById('sheet-checkout').classList.add('sheet-hidden', 'pointer-events-none');
+    };
+
+    window.updateDeliveryCalculation = function() {
+      triggerHaptic();
+      const mode = document.querySelector('input[name="delivery-mode"]:checked').value;
+      const addrContainer = document.getElementById('address-container');
+      const addrInput = document.getElementById('cust-address');
+      const feeEl = document.getElementById('checkout-fee');
+      const subtotalEl = document.getElementById('checkout-subtotal');
+      const totalEl = document.getElementById('checkout-total');
+
+      const subtotal = cart.reduce((acc, item) => acc + (item.product.price * item.qty), 0);
+      const deliveryFee = (mode === 'entrega') ? 6.00 : 0.00;
+      const total = subtotal + deliveryFee;
+
+      if (mode === 'entrega') {
+        addrContainer.classList.remove('hidden');
+        addrInput.required = true;
+        feeEl.innerText = `R$ 6,00`;
+      } else {
+        addrContainer.classList.add('hidden');
+        addrInput.required = false;
+        feeEl.innerText = `Grátis`;
+      }
+
+      subtotalEl.innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+      totalEl.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    };
+
+    window.handlePaymentChange = function() {
+      const method = document.getElementById('payment-method').value;
+      const changeContainer = document.getElementById('change-container');
+      if (method === 'Dinheiro') {
+        changeContainer.classList.remove('hidden');
+      } else {
+        changeContainer.classList.add('hidden');
+      }
+    };
+
+    window.submitOrder = function(e) {
+      e.preventDefault();
+      triggerHaptic();
+
+      const name = document.getElementById('cust-name').value;
+      const phone = document.getElementById('cust-phone').value;
+      const mode = document.querySelector('input[name="delivery-mode"]:checked').value;
+      const address = document.getElementById('cust-address').value;
+      const payment = document.getElementById('payment-method').value;
+      const change = document.getElementById('cust-change').value;
+
+      const subtotal = cart.reduce((acc, item) => acc + (item.product.price * item.qty), 0);
+      const deliveryFee = (mode === 'entrega') ? 6.00 : 0.00;
+      const total = subtotal + deliveryFee;
+
+      let msg = `*--- NOVO PEDIDO - MCS SALGADERIA ---*%0A%0A`;
+      msg += `*Cliente:* ${name}%0A`;
+      msg += `*Telefone:* ${phone}%0A`;
+      msg += `*Modalidade:* ${mode === 'entrega' ? 'Entrega em Casa' : 'Retirar no Balcão'}%0A`;
+      if (mode === 'entrega') {
+        msg += `*Endereço:* ${address}%0A`;
+      }
+      msg += `*Pagamento:* ${payment}%0A`;
+      if (payment === 'Dinheiro' && change) {
+        msg += `*Troco para:* R$ ${change}%0A`;
+      }
+
+      msg += `%0A*ITENS DO PEDIDO:*%0A`;
+      cart.forEach((item, idx) => {
+        msg += `${idx + 1}. *${item.product.name}* (x${item.qty}) - R$ ${(item.product.price * item.qty).toFixed(2).replace('.', ',')}%0A`;
+        if (item.flavors) {
+          const fritosList = Object.entries(item.flavors.fritos || {}).filter(([_, q]) => q > 0).map(([f, q]) => `${q} ${f}`).join(', ');
+          const assadosList = Object.entries(item.flavors.assados || {}).filter(([_, q]) => q > 0).map(([a, q]) => `${q} ${a}`).join(', ');
+          if (fritosList) msg += `   - Fritos: ${fritosList}%0A`;
+          if (assadosList) msg += `   - Assados: ${assadosList}%0A`;
+        }
+      });
+
+      msg += `%0A*RESUMO FINANCEIRO:*%0A`;
+      msg += `Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}%0A`;
+      msg += `Taxa de Entrega: ${mode === 'entrega' ? 'R$ 6,00' : 'R$ 0,00 (Grátis)'}%0A`;
+      msg += `*TOTAL FINAL: R$ ${total.toFixed(2).replace('.', ',')}*%0A`;
+
+      const whatsappNumber = "5521986679447";
+      const targetUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${msg}`;
+
+      window.open(targetUrl, '_blank');
+      window.closeCheckoutSheet();
+    };
+
+    // --- INSTALL PWA MODAL ---
+    window.openInstallTip = function() {
+      triggerHaptic();
+      document.getElementById('modal-install').classList.remove('hidden');
+    };
+    window.closeInstallTip = function() {
+      document.getElementById('modal-install').classList.add('hidden');
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+      updateCartUI();
+    });
+  </script>
+</body>
+</html>
