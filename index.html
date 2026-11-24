@@ -452,28 +452,28 @@
     // --- CATALOG DATA ---
     const PRODUCTS = [
       // Fritos 180g
-      { id: 'f1', category: 'fritos', name: 'Coxinha de Frango / Catupiry(180g)', price: 9.00, desc: 'Massa leve com recheio abundante de frango e catupiry.', img: '/MCS-Salgaderia/fotos/lanche/coxinha_frango_catupiry.jpeg' },
-      { id: 'f2', category: 'fritos', name: 'Coxinha de Costela (180g)', price: 11.00, desc: 'Massa leve com recheio de costela bovina e cream cheese.', img: '/MCS-Salgaderia/fotos/lanche/coxinha_costela.jpeg' },
-      { id: 'f3', category: 'fritos', name: 'Coxinha de Calabresa (180g)', price: 10.00, desc: 'Massa leve com recheio de linguiça calabresa e catupiry.', img: '/MCS-Salgaderia/fotos/lanche/coxinha_calabresa.jpeg' },
-      { id: 'f4', category: 'fritos', name: 'Coxinha de frango (180g)', price: 8.00, desc: 'Massa leve com recheio abundante de frango fesfiado.', img: '/MCS-Salgaderia/fotos/lanche/coxinha_frango.jpeg' },
+      { id: 'f1', category: 'fritos', name: 'Coxinha de Frango / Catupiry(180g)', price: 9.00, desc: 'Massa leve com recheio abundante de frango e catupiry.', img: '/MCS-Salgaderia/lanche/coxinha_frango_catupiry.jpeg' },
+      { id: 'f2', category: 'fritos', name: 'Coxinha de Costela (180g)', price: 11.00, desc: 'Massa leve com recheio de costela bovina e cream cheese.', img: '/MCS-Salgaderia/lanche/coxinha_costela.jpeg' },
+      { id: 'f3', category: 'fritos', name: 'Coxinha de Calabresa (180g)', price: 10.00, desc: 'Massa leve com recheio de linguiça calabresa e catupiry.', img: '/MCS-Salgaderia/lanche/coxinha_calabresa.jpeg' },
+      { id: 'f4', category: 'fritos', name: 'Coxinha de frango (180g)', price: 8.00, desc: 'Massa leve com recheio abundante de frango fesfiado.', img: '/MCS-Salgaderia/lanche/coxinha_frango.jpeg' },
       
       // Assados
-      { id: 'a1', category: 'assados', name: 'Joelho Presunto e Queijo', price: 9.00, desc: 'Massa assada macia e recheada com presunto e queijo.', img: '/MCS-Salgaderia/fotos/lanche/joelho_queijo_presunto.jpeg' },
-      { id: 'a2', category: 'assados', name: 'Hambúrguer Assado', price: 12.00, desc: 'Massa leve assada com Carne artesanal, queijo mussarela, presunto e cheddan.', img: '/MCS-Salgaderia/fotos/lanche/hamburge.jpeg' },
-      { id: 'a3', category: 'assados', name: 'Baguete de Calabresa', price: 16.00, desc: 'Massa leve assada com recheio de linguiça calabresa, azeitona, queijo mussarela e catupiry.', img: '/MCS-Salgaderia/fotos/lanche/baguete_calabresa.jpeg' },
-      { id: 'a4', category: 'assados', name: 'Baguete de Pernil', price: 18.00, desc: 'Massa leve assada com recheio de pernil suíno e creeam cheese.', img: '/MCS-Salgaderia/fotos/lanche/baguete_pernil.jpeg' },
+      { id: 'a1', category: 'assados', name: 'Joelho Presunto e Queijo', price: 9.00, desc: 'Massa assada macia e recheada com presunto e queijo.', img: '/MCS-Salgaderia/lanche/joelho_queijo_presunto.jpeg' },
+      { id: 'a2', category: 'assados', name: 'Hambúrguer Assado', price: 12.00, desc: 'Massa leve assada com Carne artesanal, queijo mussarela, presunto e cheddan.', img: '/MCS-Salgaderia/lanche/hamburge.jpeg' },
+      { id: 'a3', category: 'assados', name: 'Baguete de Calabresa', price: 16.00, desc: 'Massa leve assada com recheio de linguiça calabresa, azeitona, queijo mussarela e catupiry.', img: '/MCS-Salgaderia/lanche/baguete_calabresa.jpeg' },
+      { id: 'a4', category: 'assados', name: 'Baguete de Pernil', price: 18.00, desc: 'Massa leve assada com recheio de pernil suíno e creeam cheese.', img: '/MCS-Salgaderia/lanche/baguete_pernil.jpeg' },
 
       // Porção 20g (Mínimo 30 unidades)
-      { id: 'p1', category: 'porcoes', name: 'Porção Salgadinhos Fritos (20g)', price: 1.10, isPorcao: true, minQty: 30, desc: 'Monte com seus sabores favoritos (Mínimo 30 unidades).', img: '/MCS-Salgaderia/fotos/festa/salgadinhos_fritos.jpeg' },
+      { id: 'p1', category: 'porcoes', name: 'Porção Salgadinhos Fritos (20g)', price: 1.10, isPorcao: true, minQty: 30, desc: 'Monte com seus sabores favoritos (Mínimo 30 unidades).', img: '/MCS-Salgaderia/festa/salgadinhos_fritos.jpeg' },
 
       // Combos Festa
-      { id: 'c1', category: 'combos', name: 'Combo Festa 1 (30 Salgados)', price: 45.00, isCombo: true, fritosReq: 20, assadosReq: 10, desc: '20 Salgados Fritos + 10 Assados à sua escolha.', img: '/MCS-Salgaderia/fotos/festa/salgadinhos_diversos.jpeg' },
-      { id: 'c2', category: 'combos', name: 'Combo Festa 2 (50 Salgados)', price: 72.00, isCombo: true, fritosReq: 35, assadosReq: 15, desc: '35 Salgados Fritos + 15 Assados à sua escolha.', img: '/MCS-Salgaderia/fotos/festa/salgadinhos_diversos.jpeg' },
-      { id: 'c3', category: 'combos', name: 'Combo Festa 3 (100 Salgados)', price: 135.00, isCombo: true, fritosReq: 70, assadosReq: 30, desc: '70 Salgados Fritos + 30 Assados à sua escolha.', img: '/MCS-Salgaderia/fotos/festa/salgadinhos_diversos.jpeg' },
+      { id: 'c1', category: 'combos', name: 'Combo Festa 1 (30 Salgados)', price: 45.00, isCombo: true, fritosReq: 20, assadosReq: 10, desc: '20 Salgados Fritos + 10 Assados à sua escolha.', img: '/MCS-Salgaderia/festa/salgadinhos_diversos.jpeg' },
+      { id: 'c2', category: 'combos', name: 'Combo Festa 2 (50 Salgados)', price: 72.00, isCombo: true, fritosReq: 35, assadosReq: 15, desc: '35 Salgados Fritos + 15 Assados à sua escolha.', img: '/MCS-Salgaderia/festa/salgadinhos_diversos.jpeg' },
+      { id: 'c3', category: 'combos', name: 'Combo Festa 3 (100 Salgados)', price: 135.00, isCombo: true, fritosReq: 70, assadosReq: 30, desc: '70 Salgados Fritos + 30 Assados à sua escolha.', img: '/MCS-Salgaderia/festa/salgadinhos_diversos.jpeg' },
 
       // Doces
-      { id: 'd1', category: 'doces', name: 'Churros Doce de Leite (20g)', price: 1.50, desc: 'Crocante por fora, macio e recheado por dentro.', img: '/MCS-Salgaderia/fotos/lanche/churros.jpeg' },
-      { id: 'd2', category: 'doces', name: 'Carolina Recheada', price: 2.00, desc: 'Massa choux leve recheada com doce de leite caseiro.', img: '/MCS-Salgaderia/fotos/lanche/carolinas.jpeg' }
+      { id: 'd1', category: 'doces', name: 'Churros Doce de Leite (20g)', price: 1.50, desc: 'Crocante por fora, macio e recheado por dentro.', img: '/MCS-Salgaderia/lanche/churros.jpeg' },
+      { id: 'd2', category: 'doces', name: 'Carolina Recheada', price: 2.00, desc: 'Massa choux leve recheada com doce de leite caseiro.', img: '/MCS-Salgaderia/lanche/carolinas.jpeg' }
     ];
 
     const FLAVORS_FRITOS = ['Coxinha de Frango', 'Bolinha de Queijo', 'Kibe Tradicional', 'Risoles Presunto/Queijo', 'Calabresa com Queijo', 'Enroladinho Salsicha'];
